@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String?
+  role         String   @default("admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Post {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  content       String    @default("")
+  excerpt       String?   @default("")
+  featuredImage String?   @default("")
+  author        String?   @default("")
+  categoryId    String?   @default("")
+  tags          String?   @default("")
+  status        String    @default("DRAFT")
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  createdAt DateTime @default(now())
+}
+
+model Author {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  bio         String?  @default("")
+  avatar      String?  @default("")
+  email       String?  @default("")
+  isDefault   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String   @default("")
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  status    String   @default("ACTIVE")
+  source    String?  @default("")
+  createdAt DateTime @default(now())
+}
+
+model HomepageSettings {
+  id           String @id @default(cuid())
+  siteName     String @default("Kitchen Echo")
+  tagline      String @default("Your daily dose of kitchen wisdom")
+  description  String @default("")
+  logo         String @default("")
+  footerText   String @default("© Kitchen Echo. All rights reserved.")
+  heroTitle    String @default("Your Kitchen, Amplified")
+  heroSubtitle String @default("Smart tips, honest reviews, and delicious inspiration")
+  heroCta      String @default("Explore Articles")
+  heroImage    String @default("")
+  aboutText    String @default("")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

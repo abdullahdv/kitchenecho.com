@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    background-color: #faf8f5;
+    color: #2d3436;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #2d3436;
+  }
+}
+
+@layer components {
+  .prose-kitchen {
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.8;
+    color: #2d3436;
+  }
+
+  .prose-kitchen h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #2d3436;
+  }
+
+  .prose-kitchen h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #2d3436;
+  }
+
+  .prose-kitchen p {
+    margin-bottom: 1.25rem;
+  }
+
+  .prose-kitchen a {
+    color: #e67e22;
+    text-decoration: underline;
+  }
+
+  .prose-kitchen a:hover {
+    color: #d35400;
+  }
+
+  .prose-kitchen ul, .prose-kitchen ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .prose-kitchen li {
+    margin-bottom: 0.5rem;
+  }
+
+  .prose-kitchen img {
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+
+  .prose-kitchen blockquote {
+    border-left: 4px solid #e67e22;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #636e72;
+    font-style: italic;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background-color: #e67e22;
+    color: white;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #d35400;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background-color: white;
+    color: #636e72;
+    border: 1px solid #e8e0d6;
+    transition: background-color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: #f5f0eb;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #e8e0d6;
+    background-color: #faf8f5;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px #e67e22;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid #e8e0d6;
+    padding: 1.5rem;
+  }
+}

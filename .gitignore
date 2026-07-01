@@ -45,4 +45,3 @@ node_modules/
 *.db
 .env.local
 src/generated/
-prisma.config.ts

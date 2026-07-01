@@ -80,7 +80,7 @@ export default async function PostsPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${p.status === "PUBLISHED" ? "bg-green-50 text-green-700" : "bg-yellow-50 text-yellow-700"}`}>{p.status}</span>
-                  <form action={deletePost.bind(null, p.id)} onSubmit={(e) => { if (!confirm("Delete?")) e.preventDefault() }}>
+                  <form action={deletePost.bind(null, p.id)}>
                     <button type="submit" className="text-xs text-red-500 hover:underline">Delete</button>
                   </form>
                 </div>

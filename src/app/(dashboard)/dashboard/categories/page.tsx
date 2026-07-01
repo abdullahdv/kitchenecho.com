@@ -26,7 +26,7 @@ export default async function CategoriesPage() {
               {categories.map((c: any) => (
                 <div key={c.id} className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[#f5f0eb]">
                   <span className="text-sm font-medium text-[#2d3436]">{c.name}</span>
-                  <form action={deleteCategory.bind(null, c.id)} onSubmit={(e) => { if (!confirm('Delete category?')) e.preventDefault() }}>
+                  <form action={deleteCategory.bind(null, c.id)} >
                     <button type="submit" className="text-xs text-red-500 hover:underline">Delete</button>
                   </form>
                 </div>

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = await prisma.post.findUnique({ where: { slug } })
   if (!post) return {}
   return {
-    title: `${post.title} | Kitchen Echo`,
+    title: post.title,
     description: post.excerpt || "Smart kitchen tips, honest product reviews, and delicious inspiration.",
     openGraph: {
       title: post.title,

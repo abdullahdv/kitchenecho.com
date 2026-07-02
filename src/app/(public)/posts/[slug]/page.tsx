@@ -37,7 +37,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <header className="mb-8">
         <h1 className="text-3xl md:text-4xl font-sans font-bold text-[#2d3436] leading-tight">{post.title}</h1>
         <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-[#a0998f]">
-          {post.author && <span className="font-medium text-[#636e72]">By {post.author}</span>}
+          {post.author && <Link href={`/author/${post.author.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/-$/,"")}`} className="font-medium text-[#636e72] hover:text-[#e67e22]">By {post.author}</Link>}
           <time>{formatDate(post.publishedAt)}</time>
           <span>· {readingTime(post.content)} min read</span>
         </div>

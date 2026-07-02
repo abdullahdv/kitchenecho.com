@@ -56,6 +56,35 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <Link href="/posts" className="text-sm font-medium text-[#e67e22] hover:underline">← Back to articles</Link>
         </div>
       </footer>
+
+      {/* EEAT JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.excerpt,
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt,
+            author: {
+              "@type": "Person",
+              name: post.author || "Kitchen Echo",
+              url: post.author ? `https://kitchenecho.com/author/${post.author.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/-$/,"")}` : "https://kitchenecho.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "Kitchen Echo",
+              url: "https://kitchenecho.com",
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://kitchenecho.com/posts/${post.slug}`,
+            },
+          }),
+        }}
+      />
     </article>
   )
 }

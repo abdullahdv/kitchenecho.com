@@ -15,6 +15,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Kitchen Echo",
+              url: "https://kitchenecho.com",
+              description: "Smart kitchen tips, honest product reviews, and delicious inspiration for every home cook.",
+              foundingDate: "2026",
+            }),
+          }}
+        />
         <Header session={session} />
         <main className="flex-1">{children}</main>
         <Footer />

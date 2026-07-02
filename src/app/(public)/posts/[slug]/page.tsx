@@ -2,6 +2,24 @@ import { db } from "@/lib/db"
 import { notFound } from "next/navigation"
 import { formatDate, readingTime } from "@/lib/utils"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const prisma = await db()
+  const { slug } = await params
+  const post = await prisma.post.findUnique({ where: { slug } })
+  if (!post) return {}
+  return {
+    title: `${post.title} | Kitchen Echo`,
+    description: post.excerpt || "Smart kitchen tips, honest product reviews, and delicious inspiration.",
+    openGraph: {
+      title: post.title,
+      description: post.excerpt || undefined,
+      type: "article",
+      publishedTime: post.publishedAt?.toISOString(),
+    },
+  }
+}
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
   const prisma = await db()
@@ -29,7 +47,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <img src={post.featuredImage} alt={post.title} className="w-full h-auto" />
         </div>
       )}
-      <div className="prose-kitchen" dangerouslySetInnerHTML={{ __html: post.content }} />
+      <div className="prose prose-lg max-w-none prose-img:rounded-xl prose-a:text-[#e67e22]" dangerouslySetInnerHTML={{ __html: post.content }} />
       <footer className="mt-12 pt-8 border-t border-[#e8e0d6]">
         {post.tags?.split(",").filter(Boolean).map((tag: string) => (
           <span key={tag} className="inline-block mr-2 mb-2 px-3 py-1 bg-[#f5f0eb] rounded-full text-xs font-medium text-[#636e72]">#{tag.trim()}</span>
